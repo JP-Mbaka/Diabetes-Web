@@ -32,6 +32,8 @@ function PredictForm() {
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true);
+    console.log("Request Data:", JSON.stringify(data));
+
     try {
       const res = await fetch("https://dioabetesv2.onrender.com/predict", {
         method: "POST",
@@ -67,7 +69,15 @@ function PredictForm() {
     return (
       <div className="p-4">
         <h2 className="text-xl font-semibold mb-4">Prediction Result</h2>
-        <p>{result}</p>
+        <div
+          className={`py-4 px-2 ${
+            result === "Tested Negative"
+              ? `bg-red-300 text-red-950 `
+              : `bg-green-300 text-green-950`
+          } text-center rounded-sm`}
+        >
+          <p className="font-extrabold opacity-100">{result}</p>
+        </div>
         <button
           onClick={() => {
             setResponseReceived(false);
@@ -115,7 +125,7 @@ function PredictForm() {
         <AuthCustomInput
           name="preg"
           control={formBuild.control}
-          placeholder="No. Of Glucose"
+          placeholder="No. Of Pregnancy"
         />
         <AuthCustomInput
           name="pres"

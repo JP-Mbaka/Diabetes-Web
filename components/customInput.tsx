@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import React from "react";
 import { Control, FieldPath } from "react-hook-form";
 import { z } from "zod";
+import { Label } from "./ui/label";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const FormSchema = AuthFormSchema();
@@ -26,19 +27,14 @@ function AuthCustomInput({ control, name, placeholder }: CustomInputTypes) {
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem>
+        <FormItem className="flex gap-20 w-fit">
+          <Label className="font-bold">{placeholder.toUpperCase()}:</Label>
           <FormControl>
             <Input
               {...field}
-              type={
-                name.match("password")
-                  ? "password"
-                  : name.match("confirmPassword")
-                  ? "password"
-                  : "text"
-              }
+              type={"number"}
               placeholder={placeholder}
-              className="p-3"
+              className="p-4"
             />
           </FormControl>
           <FormMessage />
