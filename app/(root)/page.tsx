@@ -17,8 +17,12 @@ export default function Home() {
         <PredictForm />
       </main>
       <footer className="py-12 px-24 bg-blue-400 h-0.5 flex items-center justify-center text-white">
-        Copyright @2025 www.jetpoint.com
+        <p className="font-bold">Group 10</p>
+        <p>Course Code: CSC320</p>
+        <p>Course Title: Software Laboratory</p>
+        <p>Copyright @2025 www.jetpoint.com</p>
       </footer>
+      
     </section>
   );
 }
