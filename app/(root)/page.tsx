@@ -3,12 +3,17 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import PredictForm from "@/components/predictForm";
-import Link from "next/link";
+// import Link from "next/link";
+interface UserType {
+  displayName?: string;
+  email?: string;
+  uid?: string;
+}
 
 export default function Home() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("dashboard");
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<UserType>();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -380,7 +385,6 @@ export default function Home() {
           </p>
         </div>
       </footer>
-      
     </section>
   );
 }
