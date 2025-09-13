@@ -115,6 +115,26 @@ export default function Home() {
               Predict Diabetes
             </button>
             <button
+              onClick={() => setActiveTab("tuber")}
+              className={`py-4 px-2 font-medium transition-colors ${
+                activeTab === "tuber"
+                  ? "text-blue-600 border-b-2 border-blue-600"
+                  : "text-gray-600 hover:text-blue-600"
+              }`}
+            >
+              Predict Tuberculosis
+            </button>
+            <button
+              onClick={() => setActiveTab("malaria")}
+              className={`py-4 px-2 font-medium transition-colors ${
+                activeTab === "malaria"
+                  ? "text-blue-600 border-b-2 border-blue-600"
+                  : "text-gray-600 hover:text-blue-600"
+              }`}
+            >
+              Predict Malaria
+            </button>
+            <button
               onClick={() => setActiveTab("history")}
               className={`py-4 px-2 font-medium transition-colors ${
                 activeTab === "history"
@@ -326,7 +346,33 @@ export default function Home() {
                 Diagnose diabetes with confidence. Input key health data to
                 predict your condition with precision.
               </p>
-              <PredictForm />
+              <PredictForm disease={activeTab}></PredictForm>
+            </div>
+          )}
+
+          {activeTab === "malaria" && (
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                Malaria Prediction
+              </h2>
+              <p className="text-gray-600 mb-8">
+                Diagnose diabetes with confidence. Input key health data to
+                predict your condition with precision.
+              </p>
+              <PredictForm disease={activeTab}></PredictForm>
+            </div>
+          )}
+
+          {activeTab === "tuber" && (
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                Tuberculosis Prediction
+              </h2>
+              <p className="text-gray-600 mb-8">
+                Diagnose diabetes with confidence. Input key health data to
+                predict your condition with precision.
+              </p>
+              <PredictForm disease={activeTab}></PredictForm>
             </div>
           )}
 

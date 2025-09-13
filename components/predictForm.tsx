@@ -11,7 +11,11 @@ import { AuthFormSchema } from "@/type";
 
 const formSchema = AuthFormSchema(); // moved outside component
 
-function PredictForm() {
+interface DiseaseType {
+  disease: string;
+}
+
+function PredictForm(type: DiseaseType) {
   const [isLoading, setIsLoading] = useState(false);
   const [responseReceived, setResponseReceived] = useState(false);
   const [result, setResult] = useState<string>("");
@@ -105,37 +109,85 @@ function PredictForm() {
         <AuthCustomInput
           name="insu"
           control={formBuild.control}
-          placeholder="Insulin"
+          placeholder={
+            type.disease == "malaria"
+              ? "Fever"
+              : type.disease == "tuber"
+              ? "Smoker"
+              : "Insulin"
+          }
         />
         <AuthCustomInput
           name="mass"
           control={formBuild.control}
-          placeholder="Mass"
+          // placeholder="Mass"
+          placeholder={
+            type.disease == "malaria"
+              ? "Headache"
+              : type.disease == "tuber"
+              ? "HIV"
+              : "Mass"
+          }
         />
         <AuthCustomInput
           name="pedi"
           control={formBuild.control}
-          placeholder="Pedigree"
+          // placeholder="Pedigree"
+          placeholder={
+            type.disease == "malaria"
+              ? "Vomiting"
+              : type.disease == "tuber"
+              ? "Cough"
+              : "Pedigree"
+          }
         />
         <AuthCustomInput
           name="plas"
           control={formBuild.control}
-          placeholder="Glucose Level"
+          // placeholder="Glucose Level"
+          placeholder={
+            type.disease == "malaria"
+              ? "Haemoglobin"
+              : type.disease == "tuber"
+              ? "Haemoptysis"
+              : "Glucose Level"
+          }
         />
         <AuthCustomInput
           name="preg"
           control={formBuild.control}
-          placeholder="No. Of Pregnancy"
+          // placeholder="No. Of Pregnancy"
+          placeholder={
+            type.disease == "malaria"
+              ? "Fever"
+              : type.disease == "Weight Loss"
+              ? "Weight Loss"
+              : "No. Of Pregnancy"
+          }
         />
         <AuthCustomInput
           name="pres"
           control={formBuild.control}
-          placeholder="Blood Pressure"
+          // placeholder="Blood Pressure"
+          placeholder={
+            type.disease == "malaria"
+              ? "Chills"
+              : type.disease == "tuber"
+              ? "Chest Pain"
+              : "Blood Pressure"
+          }
         />
         <AuthCustomInput
           name="skin"
           control={formBuild.control}
-          placeholder="Skin Thickness"
+          // placeholder="Skin Thickness"
+          placeholder={
+            type.disease == "malaria"
+              ? "Blood Platelet"
+              : type.disease == "tuber"
+              ? "Night Sweats"
+              : "Skin Thickness"
+          }
         />
 
         {!isLoading ? (
